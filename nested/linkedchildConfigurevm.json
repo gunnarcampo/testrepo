@@ -31,13 +31,10 @@
   },
   "resources": [
     {
-      "name": "DoSimpleDSCconfig",
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "location": "[parameters('location1')]",
+      "name": "DoSimpleDSCconfig",
       "apiVersion": "2015-06-15",
-      "tags": {
-        "displayName": "DoSimpleDSCconfig"
-      },
+      "location": "[parameters('location1')]",      
       "properties": {
         "publisher": "Microsoft.Powershell",
         "type": "DSC",
@@ -45,7 +42,7 @@
         "autoUpgradeMinorVersion": true,
         "settings": {
           "modulesUrl": "https://raw.githubusercontent.com/gunnarcampo/sqlao/master/CreatePDCAO.ps1.zip",
-          "configurationFunction": "PrereqSecondary.ps1\\PrereqSecondary",
+          "configurationFunction": "CreatePDCAO.ps1\\CreatePDCAO",
           "wmfVersion": "5.0",
           "Properties": {
             "DomainName": "[parameters('mgmtdomainName')]",
