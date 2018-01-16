@@ -41,7 +41,7 @@
         "typeHandlerVersion": "2.19",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesUrl": "https://raw.githubusercontent.com/gunnarcampo/sqlao/master/CreatePDCAO.ps1.zip",
+          "modulesUrl": "https://raw.githubusercontent.com/gunnarcampo/testrepo/master/nested/CreatePDCAO.ps1.zip",
           "configurationFunction": "CreatePDCAO.ps1\\CreatePDCAO",
           "wmfVersion": "5.0",
           "Properties": {
