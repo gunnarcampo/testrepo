@@ -19,9 +19,9 @@
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "DoSimpleDSCconfig",
+      "name": "DoStuffAfterwards",
       "apiVersion": "2015-06-15",
-      "location": "[parameters('location1')]",      
+      "location": "[parameters('location1')]",
       "properties": {
         "publisher": "Microsoft.Powershell",
         "type": "DSC",
