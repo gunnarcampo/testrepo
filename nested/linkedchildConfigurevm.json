@@ -30,8 +30,8 @@
         "typeHandlerVersion": "2.19",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesUrl": "https://raw.githubusercontent.com/gunnarcampo/testrepo/master/nested/CreatePDCAO.ps1.zip",
-          "configurationFunction": "CreatePDCAO.ps1\\CreatePDCAO",
+          "modulesUrl": "https://raw.githubusercontent.com/gunnarcampo/testrepo/master/nested/CreateDirectory.ps1.zip",
+          "configurationFunction": "CreateDirectory.ps1\\CreateDirectory",
           "wmfVersion": "5.0",
           "Properties": {
             "DomainName": "[parameters('mgmtdomainName')]",
