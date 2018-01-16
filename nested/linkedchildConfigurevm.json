@@ -32,9 +32,9 @@
   "resources": [
     {
       "name": "DoSimpleDSCconfig",
-      "type": "extensions",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
       "location": "[parameters('location1')]",
-      "apiVersion": "2015-06-15",      
+      "apiVersion": "2015-06-15",
       "tags": {
         "displayName": "DoSimpleDSCconfig"
       },
