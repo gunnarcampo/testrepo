@@ -1,0 +1,68 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stlink2Type": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ]
+    },
+    "location1": {
+      "type": "string"
+    },
+    "mgmtdomainName": {
+      "type": "string"
+    },
+    "AdminUserName": {
+      "type": "string"
+    },
+    "AdminPassword": {
+      "type": "securestring"
+    }
+  },
+  "variables": {
+    "stlink2Name": "[concat('stlink2', uniqueString(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "name": "DoSimpleDSCconfig",
+      "type": "extensions",
+      "location": "[parameters('location1')]",
+      "apiVersion": "2015-06-15",      
+      "tags": {
+        "displayName": "DoSimpleDSCconfig"
+      },
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.19",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "modulesUrl": "https://raw.githubusercontent.com/gunnarcampo/sqlao/master/CreatePDCAO.ps1.zip",
+          "configurationFunction": "PrereqSecondary.ps1\\PrereqSecondary",
+          "wmfVersion": "5.0",
+          "Properties": {
+            "DomainName": "[parameters('mgmtdomainName')]",
+            "AdminCreds": {
+              "UserName": "[parameters('AdminUserName')]",
+              "Password": "PrivateSettingsRef:AdminPassword"
+            }
+          }
+        },
+        "protectedSettings": {
+          "Items": {
+            "AdminPassword": "[parameters('AdminPassword')]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
