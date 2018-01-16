@@ -25,10 +25,7 @@
     "AdminPassword": {
       "type": "securestring"
     }
-  },
-  "variables": {
-    "stlink2Name": "[concat('stlink2', uniqueString(resourceGroup().id))]"
-  },
+  },  
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
