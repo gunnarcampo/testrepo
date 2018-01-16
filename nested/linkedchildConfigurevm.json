@@ -21,7 +21,7 @@
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "DoStuffAfterwards",
+      "name": "DoingStuffAfterwards",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location1')]",
       "dependsOn": [
