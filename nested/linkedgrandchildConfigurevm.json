@@ -1,0 +1,52 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmparentName": {
+      "type": "string"
+    },
+    "location1": {
+      "type": "string"
+    },
+    "mgmtdomainName": {
+      "type": "string"
+    },
+    "AdminUserName": {
+      "type": "string"
+    },
+    "AdminPassword": {
+      "type": "securestring"
+    }
+  },  
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "name": "[concat(parameters('vmparentName'),'/DoingMoreStuffAfterwards')]",
+      "apiVersion": "2015-06-15",
+      "location": "[parameters('location1')]",     
+      "properties": {
+        "publisher": "Microsoft.Powershell",
+        "type": "DSC",
+        "typeHandlerVersion": "2.19",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "modulesUrl": "https://raw.githubusercontent.com/gunnarcampo/testrepo/master/nested/OpenFirewallPorts.ps1.zip",
+          "configurationFunction": "OpenFirewallPorts.ps1\\OpenFirewallPorts",
+          "wmfVersion": "5.0",
+          "Properties": {
+            "DomainName": "[parameters('mgmtdomainName')]",
+            "AdminCreds": {
+              "UserName": "[parameters('AdminUserName')]",
+              "Password": "PrivateSettingsRef:AdminPassword"
+            }
+          }
+        },
+        "protectedSettings": {
+          "Items": {
+            "AdminPassword": "[parameters('AdminPassword')]"
+          }
+        }
+      }
+    }
+  ]
+}
